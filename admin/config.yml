@@ -1,0 +1,237 @@
+# =========================================================
+# CONFIG.YML — Konfigurasi Decap CMS
+# Jurusan Kesehatan Gigi Poltekkes Kemenkes Makassar
+#
+# CATATAN UNTUK PEMULA:
+# File ini mengatur SEMUA hal tentang halaman admin (/admin),
+# seperti: cara login, di mana data disimpan, dan field apa saja
+# yang muncul di form CMS. Bagian yang WAJIB diubah sebelum
+# website benar-benar dipakai ditandai dengan komentar "GANTI INI".
+# =========================================================
+
+# ---------------------------------------------------------
+# BACKEND: mengatur bagaimana CMS terhubung ke GitHub
+# ---------------------------------------------------------
+# "git-gateway" dipilih karena PALING MUDAH untuk pemula:
+# staf cukup login pakai email & password yang didaftarkan lewat
+# fitur "Identity" di Netlify — TIDAK perlu membuat aplikasi OAuth
+# GitHub secara manual. Netlify yang menjembatani ke GitHub.
+backend:
+  name: git-gateway
+  branch: main   # GANTI INI jika nama branch utama repo Anda bukan "main" (misalnya "master")
+
+# ---------------------------------------------------------
+# URL SITUS (dipakai untuk tombol "Preview" di CMS)
+# ---------------------------------------------------------
+site_url: https://[NAMA-SITUS-ANDA].netlify.app   # GANTI INI dengan alamat Netlify Anda
+display_url: https://[NAMA-SITUS-ANDA].netlify.app # GANTI INI juga
+logo_url: /images/logo.png
+
+# ---------------------------------------------------------
+# LOKASI PENYIMPANAN FOTO / FILE YANG DI-UPLOAD DARI CMS
+# ---------------------------------------------------------
+media_folder: "images/uploads"   # semua file yang diunggah dari CMS masuk ke sini
+public_folder: "/images/uploads" # alamat publik untuk menampilkan file tersebut di halaman
+
+# Alur kerja sederhana: perubahan langsung tersimpan ke branch utama.
+# Jika ingin ada tahap "Draft -> Review -> Publish" sebelum tayang,
+# ubah baris di bawah ini menjadi: publish_mode: editorial_workflow
+publish_mode: simple
+
+# =========================================================
+# COLLECTIONS — daftar jenis konten yang bisa dikelola di /admin
+# Setiap collection di bawah menggunakan tipe "file collection":
+# artinya SATU file JSON berisi SEMUA data (misalnya semua berita
+# ada di content/berita/berita.json). Staf tinggal klik tombol
+# "+ Tambah" di dalam CMS untuk menambah item baru, TANPA perlu
+# mengedit file atau kode sama sekali.
+# =========================================================
+collections:
+
+  # ------------------- 1. BERITA -------------------
+  - name: "berita"
+    label: "Berita"
+    files:
+      - name: "berita"
+        label: "Daftar Berita"
+        file: "content/berita/berita.json"
+        fields:
+          - label: "Daftar Berita"
+            name: "items"
+            widget: "list"
+            summary: "{{title}} — {{date}}"
+            fields:
+              - { label: "Judul Berita", name: "title", widget: "string" }
+              - { label: "Slug (untuk URL, tanpa spasi, huruf kecil)", name: "slug", widget: "string", hint: "Contoh: kegiatan-donor-darah-2026" }
+              - { label: "Tanggal", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+              - label: "Kategori"
+                name: "category"
+                widget: "select"
+                options: ["Akademik", "Prestasi", "Pengabmas", "Kegiatan Mahasiswa", "Pengumuman", "Umum"]
+              - { label: "Penulis", name: "author", widget: "string", default: "Admin Jurusan" }
+              - { label: "Foto Utama", name: "featured_image", widget: "image", required: false }
+              - { label: "Ringkasan Singkat", name: "excerpt", widget: "text" }
+              - { label: "Isi Berita Lengkap (Markdown)", name: "body", widget: "markdown" }
+              - { label: "Tampilkan sebagai berita utama?", name: "featured", widget: "boolean", default: false }
+              - { label: "Publikasikan?", name: "published", widget: "boolean", default: true }
+
+  # ------------------- 2. AGENDA -------------------
+  - name: "agenda"
+    label: "Agenda"
+    files:
+      - name: "agenda"
+        label: "Daftar Agenda"
+        file: "content/agenda/agenda.json"
+        fields:
+          - label: "Daftar Agenda"
+            name: "items"
+            widget: "list"
+            summary: "{{title}} — {{date}}"
+            fields:
+              - { label: "Judul Kegiatan", name: "title", widget: "string" }
+              - { label: "Tanggal", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+              - { label: "Waktu", name: "time", widget: "string", required: false, hint: "Contoh: 08:00 - 12:00 WITA" }
+              - { label: "Lokasi", name: "location", widget: "string", required: false }
+              - { label: "Deskripsi Singkat", name: "description", widget: "text", required: false }
+              - { label: "Foto (opsional)", name: "image", widget: "image", required: false }
+
+  # ------------------- 3. PRESTASI -------------------
+  - name: "prestasi"
+    label: "Prestasi Mahasiswa"
+    files:
+      - name: "prestasi"
+        label: "Daftar Prestasi"
+        file: "content/prestasi/prestasi.json"
+        fields:
+          - label: "Daftar Prestasi"
+            name: "items"
+            widget: "list"
+            summary: "{{title}} — {{student_name}}"
+            fields:
+              - { label: "Nama Prestasi / Lomba", name: "title", widget: "string" }
+              - { label: "Nama Mahasiswa", name: "student_name", widget: "string" }
+              - { label: "Nama Kompetisi", name: "competition", widget: "string" }
+              - { label: "Juara / Penghargaan", name: "achievement", widget: "string", hint: "Contoh: Juara 1, Medali Emas" }
+              - label: "Tingkat Lomba"
+                name: "level"
+                widget: "select"
+                options: ["Internal Kampus", "Wilayah", "Regional", "Nasional", "Internasional"]
+              - { label: "Tanggal", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+              - { label: "Foto", name: "image", widget: "image", required: false }
+              - { label: "Deskripsi", name: "description", widget: "text", required: false }
+
+  # ------------------- 4. PENELITIAN -------------------
+  - name: "penelitian"
+    label: "Penelitian"
+    files:
+      - name: "penelitian"
+        label: "Daftar Penelitian"
+        file: "content/penelitian/penelitian.json"
+        fields:
+          - label: "Daftar Penelitian"
+            name: "items"
+            widget: "list"
+            summary: "{{title}} — {{year}}"
+            fields:
+              - { label: "Judul Penelitian", name: "title", widget: "string" }
+              - { label: "Peneliti / Dosen", name: "researchers", widget: "string" }
+              - { label: "Tahun", name: "year", widget: "string" }
+              - label: "Kategori"
+                name: "category"
+                widget: "select"
+                options: ["Kesehatan Gigi Masyarakat", "Klinis", "Pendidikan Kesehatan", "Kesehatan Anak", "Lainnya"]
+              - { label: "Abstrak Singkat", name: "abstract", widget: "text" }
+              - { label: "Tautan Publikasi (opsional)", name: "publication_url", widget: "string", required: false }
+              - { label: "Foto (opsional)", name: "image", widget: "image", required: false }
+
+  # ------------------- 5. PENGABDIAN MASYARAKAT -------------------
+  - name: "pengabmas"
+    label: "Pengabdian Masyarakat"
+    files:
+      - name: "pengabmas"
+        label: "Daftar Kegiatan Pengabdian"
+        file: "content/pengabmas/pengabmas.json"
+        fields:
+          - label: "Daftar Kegiatan"
+            name: "items"
+            widget: "list"
+            summary: "{{title}} — {{date}}"
+            fields:
+              - { label: "Judul Kegiatan", name: "title", widget: "string" }
+              - { label: "Tanggal", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+              - { label: "Lokasi", name: "location", widget: "string" }
+              - { label: "Ketua Kegiatan", name: "team", widget: "string" }
+              - { label: "Deskripsi", name: "description", widget: "text" }
+              - { label: "Foto (opsional)", name: "image", widget: "image", required: false }
+
+  # ------------------- 6. GALERI -------------------
+  - name: "galeri"
+    label: "Galeri"
+    files:
+      - name: "galeri"
+        label: "Daftar Foto Galeri"
+        file: "content/galeri/galeri.json"
+        fields:
+          - label: "Daftar Foto"
+            name: "items"
+            widget: "list"
+            summary: "{{title}} — {{category}}"
+            fields:
+              - { label: "Judul Foto", name: "title", widget: "string" }
+              - label: "Kategori"
+                name: "category"
+                widget: "select"
+                options: ["Akademik", "Praktikum", "Pengabdian", "Prestasi", "Mahasiswa", "Dosen"]
+              - { label: "Tanggal", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+              - { label: "Foto", name: "image", widget: "image" }
+              - { label: "Keterangan Foto", name: "caption", widget: "string", required: false }
+
+  # ------------------- 7. DOWNLOAD -------------------
+  - name: "download"
+    label: "Download"
+    files:
+      - name: "download"
+        label: "Daftar Dokumen"
+        file: "content/download/download.json"
+        fields:
+          - label: "Daftar Dokumen"
+            name: "items"
+            widget: "list"
+            summary: "{{title}} — {{category}}"
+            fields:
+              - { label: "Nama Dokumen", name: "title", widget: "string" }
+              - label: "Kategori"
+                name: "category"
+                widget: "select"
+                options: ["Akademik", "Formulir", "Pedoman", "Kurikulum", "SOP", "Pengumuman"]
+              - { label: "Tahun", name: "year", widget: "string" }
+              - { label: "File Dokumen", name: "file", widget: "file", hint: "Unggah file PDF/DOC di sini" }
+              - { label: "Keterangan", name: "description", widget: "text", required: false }
+
+  # ------------------- 8. PROFIL JURUSAN (konten statis) -------------------
+  # Berbeda dari yang lain, koleksi ini BUKAN daftar/list, tapi satu set
+  # teks tunggal untuk bagian "Tentang Kami", visi-misi, sambutan, dan
+  # statistik di halaman beranda. Staf tinggal edit teksnya di sini.
+  - name: "profil"
+    label: "Profil Jurusan"
+    files:
+      - name: "profil"
+        label: "Konten Profil & Beranda"
+        file: "content/profil/profil.json"
+        fields:
+          - { label: "Judul Besar di Hero (Beranda)", name: "hero_title", widget: "string" }
+          - { label: "Subjudul di Hero (Beranda)", name: "hero_subtitle", widget: "text" }
+          - { label: "Paragraf Tentang Kami", name: "tentang_kami", widget: "text" }
+          - { label: "Sejarah Jurusan", name: "sejarah", widget: "text" }
+          - { label: "Visi", name: "visi", widget: "text" }
+          - { label: "Misi", name: "misi", widget: "text" }
+          - { label: "Nama Ketua Jurusan", name: "sambutan_nama", widget: "string" }
+          - { label: "Jabatan", name: "sambutan_jabatan", widget: "string" }
+          - { label: "Isi Sambutan Ketua Jurusan", name: "sambutan_isi", widget: "text" }
+          - { label: "Statistik: Tahun Pengalaman", name: "stat_tahun", widget: "string", hint: "Contoh: 25+ (isi jika sudah ada data resmi)" }
+          - { label: "Statistik: Jumlah Dosen & Tendik", name: "stat_dosen", widget: "string" }
+          - { label: "Statistik: Jumlah Mahasiswa & Alumni", name: "stat_mahasiswa", widget: "string" }
+          - { label: "Alamat", name: "alamat", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Telepon", name: "telepon", widget: "string" }
+          - { label: "Instagram", name: "instagram", widget: "string" }
