@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "title": "Juara 1 PORNIMAKES",
+      "student_name": "[Nama Mahasiswa]",
+      "competition": "Pekan Olahraga dan Seni Mahasiswa Kesehatan (PORNIMAKES)",
+      "achievement": "Medali Emas",
+      "level": "Wilayah",
+      "date": "2026-07-18",
+      "image": "",
+      "description": "[Placeholder deskripsi] Prestasi pada cabang lomba yang diikuti mahasiswa Jurusan Kesehatan Gigi."
+    },
+    {
+      "title": "Juara 3 PORNIMAKES",
+      "student_name": "[Nama Mahasiswa]",
+      "competition": "Pekan Olahraga dan Seni Mahasiswa Kesehatan (PORNIMAKES)",
+      "achievement": "Medali Perunggu",
+      "level": "Wilayah",
+      "date": "2026-07-18",
+      "image": "",
+      "description": "[Placeholder deskripsi] Prestasi pada cabang lomba yang diikuti mahasiswa Jurusan Kesehatan Gigi."
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+# netlify.toml
+# File ini opsional tapi membantu memastikan Netlify menyajikan
+# website dengan benar sebagai situs statis (tanpa proses build).
+
+[build]
+  publish = "."
+  command = ""
+
+# Pastikan halaman admin selalu bisa diakses langsung
+[[redirects]]
+  from = "/admin"
+  to = "/admin/index.html"
+  status = 200
