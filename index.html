@@ -17,12 +17,14 @@
 
 <div class="topbar">
   <div class="container">
-    <span>Poltekkes Kemenkes Makassar</span>
-    <div class="topbar-links">
-      <a href="#">LMS</a>
-      <a href="#">SIAKAD</a>
-      <a href="#">Repository</a>
-      <a href="kontak.html">Kontak</a>
+    <div class="topbar-contact">
+      <a href="mailto:[Email Jurusan]"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span data-cms="email">[Email Jurusan]</span></a>
+      <a href="tel:[Nomor Telepon]"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L7.9 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2Z"/></svg><span data-cms="telepon">[Nomor Telepon]</span></a>
+    </div>
+    <div class="topbar-social">
+      <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+      <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3.6l.4-4H14V7a1 1 0 0 1 1-1h3Z"/></svg></a>
+      <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 8.5s-.2-1.6-.9-2.3c-.8-.9-1.8-.9-2.2-1C15.9 5 12 5 12 5h0s-3.9 0-6.9.2c-.4 0-1.4.1-2.2 1C2.2 6.9 2 8.5 2 8.5S1.8 10.3 1.8 12v1.9c0 1.7.2 3.5.2 3.5s.2 1.6.9 2.3c.8.9 1.9.9 2.4 1 1.7.2 7.2.2 7.2.2s3.9 0 6.9-.2c.4 0 1.4-.1 2.2-1 .7-.7.9-2.3.9-2.3s.2-1.7.2-3.5V12c0-1.7-.2-3.5-.2-3.5Z"/><path d="M10 15V9l5.2 3Z"/></svg></a>
     </div>
   </div>
 </div>
@@ -38,18 +40,49 @@
     </a>
 
     <nav class="nav-menu" id="navMenu">
-      <a href="index.html" class="active">Beranda</a>
-      <a href="profil.html">Profil</a>
-      <a href="program-studi.html">Program Studi</a>
-      <a href="akademik.html">Akademik</a>
-      <a href="dosen.html">Dosen &amp; Tendik</a>
-      <a href="mahasiswa.html">Mahasiswa</a>
-      <a href="penelitian.html">Penelitian &amp; Pengabmas</a>
-      <a href="berita.html">Berita</a>
-      <a href="galeri.html">Galeri</a>
-      <a href="alumni.html">Alumni</a>
-      <a href="download.html">Download</a>
-      <a href="kontak.html">Kontak</a>
+      <ul style="display:flex;align-items:center;gap:22px;flex-wrap:wrap;list-style:none;margin:0;padding:0;">
+        <li><a href="index.html" class="active">Beranda</a></li>
+
+        <li>
+          <button type="button" class="dropdown-toggle">Profil<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="nav-dropdown">
+            <a href="profil.html">Profil Jurusan</a>
+            <a href="profil.html#sambutan">Sambutan Ketua Jurusan</a>
+            <a href="dosen.html">Dosen &amp; Tendik</a>
+          </div>
+        </li>
+
+        <li>
+          <button type="button" class="dropdown-toggle">Program Studi<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="nav-dropdown">
+            <a href="program-studi.html">D3 Kesehatan Gigi</a>
+            <a href="program-studi.html">D4 Terapi Gigi dan Mulut</a>
+          </div>
+        </li>
+
+        <li>
+          <button type="button" class="dropdown-toggle">Akademik<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="nav-dropdown">
+            <a href="akademik.html">Informasi Akademik</a>
+            <a href="penelitian.html">Penelitian &amp; Pengabmas</a>
+            <a href="download.html">Download</a>
+          </div>
+        </li>
+
+        <li>
+          <button type="button" class="dropdown-toggle">Mahasiswa<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="nav-dropdown">
+            <a href="mahasiswa.html">Kemahasiswaan</a>
+            <a href="prestasi.html">Prestasi Mahasiswa</a>
+            <a href="agenda.html">Agenda Kegiatan</a>
+            <a href="galeri.html">Galeri</a>
+            <a href="alumni.html">Alumni</a>
+          </div>
+        </li>
+
+        <li><a href="berita.html">Berita</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+      </ul>
     </nav>
 
     <div class="header-actions">
@@ -73,17 +106,28 @@
     </div>
   </div>
 </header>
-
-
-<section class="hero">
+<section class="hero-split">
   <div class="container">
-    <div class="hero-content">
-      <span class="hero-label">SELAMAT DATANG</span>
-      <h1 data-cms="hero_title">Mencetak Terapis Gigi dan Mulut yang Profesional, Unggul, dan Berdaya Saing</h1>
-      <p data-cms="hero_subtitle">Jurusan Kesehatan Gigi Poltekkes Kemenkes Makassar berkomitmen menghasilkan tenaga kesehatan gigi yang kompeten, profesional, dan mampu memberikan pelayanan kesehatan gigi dan mulut kepada masyarakat.</p>
-      <div class="hero-actions">
-        <a href="profil.html" class="btn btn-primary">Profil Jurusan</a>
-        <a href="program-studi.html" class="btn btn-outline">Program Studi</a>
+    <div class="hero-split-inner">
+      <div class="hero-text-col">
+        <div class="hero-dots-decor"></div>
+        <span class="hero-label" style="color:var(--blue-light);">SELAMAT DATANG</span>
+        <h1 data-cms="hero_title">Mencetak Terapis Gigi dan Mulut yang Profesional, Unggul, dan Berdaya Saing</h1>
+        <p data-cms="hero_subtitle">Jurusan Kesehatan Gigi Poltekkes Kemenkes Makassar berkomitmen menghasilkan tenaga kesehatan gigi yang kompeten, profesional, dan mampu memberikan pelayanan kesehatan gigi dan mulut kepada masyarakat.</p>
+        <div class="hero-actions">
+          <a href="profil.html" class="btn btn-navy">Profil Jurusan →</a>
+          <a href="program-studi.html" class="btn btn-outline" style="border-color:var(--navy);color:var(--navy);">Program Studi →</a>
+        </div>
+      </div>
+      <div class="hero-media-col">
+        <button class="hero-arrow prev" id="heroPrev" aria-label="Sebelumnya">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+        <div id="heroMedia"></div>
+        <button class="hero-arrow next" id="heroNext" aria-label="Berikutnya">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+        <div class="hero-dots-nav" id="heroDotsNav"></div>
       </div>
     </div>
   </div>
@@ -95,30 +139,31 @@
       <span class="section-label">Akses Cepat</span>
       <h2 class="section-title">Layanan Cepat</h2>
     </div>
-    <div class="quick-grid">
-      <a href="akademik.html" class="quick-card">
-        <div class="quick-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg></div>
-        <h3>Akademik</h3><p>Informasi akademik dan perkuliahan.</p>
+    <div class="quick-grid-h">
+      <a href="akademik.html" class="quick-card-h">
+        <div class="quick-icon-h"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg></div>
+        <div><h3>Akademik</h3><p>Informasi akademik dan perkuliahan.</p></div>
+        <span class="chevron">›</span>
       </a>
-      <a href="program-studi.html" class="quick-card">
-        <div class="quick-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg></div>
-        <h3>Program Studi</h3><p>Informasi program pendidikan.</p>
+      <a href="mahasiswa.html" class="quick-card-h">
+        <div class="quick-icon-h"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5V6a2 2 0 0 1 2-2h14v14H6a2 2 0 0 0-2 2Z"/><path d="M8 8h8M8 12h5"/></svg></div>
+        <div><h3>Layanan Mahasiswa</h3><p>KRS, pengajuan surat, beasiswa, dan lainnya.</p></div>
+        <span class="chevron">›</span>
       </a>
-      <a href="akademik.html" class="quick-card">
-        <div class="quick-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
-        <h3>Kalender Akademik</h3><p>Jadwal kegiatan akademik.</p>
+      <a href="berita.html" class="quick-card-h">
+        <div class="quick-icon-h"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m3 11 18-5v12L3 14v-3Z"/><path d="M11.6 16.8 13 21h-3"/></svg></div>
+        <div><h3>Pengumuman</h3><p>Informasi terbaru untuk mahasiswa dan dosen.</p></div>
+        <span class="chevron">›</span>
       </a>
-      <a href="download.html" class="quick-card">
-        <div class="quick-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12m0 0-4-4m4 4 4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg></div>
-        <h3>Download</h3><p>Unduh dokumen dan formulir.</p>
+      <a href="download.html" class="quick-card-h">
+        <div class="quick-icon-h"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12m0 0-4-4m4 4 4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg></div>
+        <div><h3>Download</h3><p>Brosur, formulir, pedoman, dan dokumen penting.</p></div>
+        <span class="chevron">›</span>
       </a>
-      <a href="#" class="quick-card">
-        <div class="quick-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 7h8M8 12h8M8 17h5"/></svg></div>
-        <h3>LMS</h3><p>Akses pembelajaran mahasiswa.</p>
-      </a>
-      <a href="#" class="quick-card">
-        <div class="quick-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
-        <h3>SIAKAD</h3><p>Sistem informasi akademik.</p>
+      <a href="alumni.html" class="quick-card-h">
+        <div class="quick-icon-h"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><circle cx="17" cy="9" r="2.6"/><path d="M3 20c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5"/><path d="M14.5 14.8c2.4.3 4.5 2.2 4.5 5.2"/></svg></div>
+        <div><h3>Alumni</h3><p>Informasi dan data alumni.</p></div>
+        <span class="chevron">›</span>
       </a>
     </div>
   </div>
@@ -190,36 +235,45 @@
   </div>
 </section>
 
-<section>
-  <div class="container">
-    <div class="section-head">
-      <span class="section-label">Update</span>
-      <h2 class="section-title">Berita &amp; Kegiatan Terbaru</h2>
-    </div>
-    <div class="card-grid" id="berita-terbaru"><p class="loading-text">Memuat berita...</p></div>
-    <div class="section-footer-btn"><a href="berita.html" class="btn btn-navy">Lihat Semua Berita</a></div>
-  </div>
-</section>
-
 <section class="section-alt">
   <div class="container">
-    <div class="section-head">
-      <span class="section-label">Jadwal</span>
-      <h2 class="section-title">Agenda Kegiatan</h2>
-    </div>
-    <div class="agenda-list" id="agenda-terbaru"><p class="loading-text">Memuat agenda...</p></div>
-    <div class="section-footer-btn"><a href="agenda.html" class="btn btn-navy">Lihat Semua Agenda</a></div>
-  </div>
-</section>
+    <div class="dashboard-grid">
 
-<section>
-  <div class="container">
-    <div class="section-head">
-      <span class="section-label">Kebanggaan Kami</span>
-      <h2 class="section-title">Prestasi Mahasiswa</h2>
+      <div class="dash-col">
+        <div class="dash-col-head"><h3>Berita Terbaru</h3><a href="berita.html">Lihat Semua</a></div>
+        <div class="dash-col-body" id="berita-terbaru-mini"><p class="loading-text">Memuat berita...</p></div>
+      </div>
+
+      <div class="dash-col">
+        <div class="dash-col-head"><h3>Agenda Kegiatan</h3><a href="agenda.html">Lihat Semua</a></div>
+        <div class="dash-col-body" id="agenda-terbaru-mini"><p class="loading-text">Memuat agenda...</p></div>
+      </div>
+
+      <div>
+        <div class="dash-col">
+          <div class="dash-col-head"><h3>Prestasi Mahasiswa</h3><a href="prestasi.html">Lihat Semua</a></div>
+          <div class="dash-col-body" id="prestasi-terbaru-mini"><p class="loading-text">Memuat prestasi...</p></div>
+        </div>
+
+        <div class="contact-mini">
+          <div class="contact-mini-head"><h3>Hubungi Kami</h3></div>
+          <div class="contact-mini-body">
+            <div class="contact-mini-info">
+              <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span data-cms="alamat">[Alamat Jurusan]</span></div>
+              <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L7.9 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2Z"/></svg><span data-cms="telepon">[Nomor Telepon]</span></div>
+              <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span data-cms="email">[Email Jurusan]</span></div>
+            </div>
+            <div class="contact-mini-photo">
+              <div class="img-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 15l-5-5-4 4-3-3-6 6"/></svg>
+                <span>Foto Gedung</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
-    <div class="card-grid" id="prestasi-terbaru"><p class="loading-text">Memuat prestasi...</p></div>
-    <div class="section-footer-btn"><a href="prestasi.html" class="btn btn-navy">Lihat Semua Prestasi</a></div>
   </div>
 </section>
 
@@ -282,6 +336,12 @@
   </div>
 </section>
 
+<section class="quote-band">
+  <div class="container">
+    <p>&ldquo;Senyum Sehat, Masa Depan Hebat&rdquo;</p>
+  </div>
+  <svg class="tooth-decor" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 2 4 5 4 10c0 4 1.5 7 2.3 10.6.3 1.4 1 2.4 2.2 2.4s1.9-1.7 2.3-3.8c.3-1.6.7-2.7 2.2-2.7s1.9 1.1 2.2 2.7c.4 2.1 1.1 3.8 2.3 3.8s1.9-1 2.2-2.4C21.5 17 23 14 23 10c0-5-3-8-8-8Z"/></svg>
+</section>
 <footer>
   <div class="container">
     <div class="footer-grid">
@@ -332,13 +392,12 @@
     </div>
   </div>
 </footer>
-
 <script src="js/script.js"></script>
 <script src="js/content-loader.js"></script>
 <script>
-  CL.renderBeritaTerbaru("berita-terbaru", 3);
-  CL.renderAgendaTerbaru("agenda-terbaru", 3);
-  CL.renderPrestasiTerbaru("prestasi-terbaru", 3);
+  CL.renderBeritaTerbaruMini("berita-terbaru-mini", 3);
+  CL.renderAgendaTerbaruMini("agenda-terbaru-mini", 3);
+  CL.renderPrestasiTerbaruMini("prestasi-terbaru-mini", 3);
   CL.renderGaleri("galeri-preview");
 </script>
 </body>
