@@ -9,3 +9,9 @@ VERSI SIAP UPLOAD KE GITHUB
 
 Gambar hero sudah ada di: images/hero.jpg
 Tidak perlu mengedit kode hero lagi.
+
+
+PEMBARUAN IDENTITAS:
+- Logo resmi Kemenkes Poltekkes Makassar sudah terpasang: images/logo-poltekkes.png
+- Nama Ketua Jurusan sudah diisi: drg. Rini Irmayanti Sitanaya, M.MKes.
+- Logo sudah dipasang pada seluruh halaman dan favicon.

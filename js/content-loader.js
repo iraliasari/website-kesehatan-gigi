@@ -242,6 +242,64 @@ var CL = (function () {
     });
   }
 
+  /* ---------- BERITA (versi ringkas untuk dashboard beranda) ---------- */
+
+  function renderBeritaTerbaruMini(containerId, limit) {
+    var container = el(containerId);
+    if (!container) return;
+    showLoading(container);
+    loadCollection("content/berita/berita.json").then(function (items) {
+      items = sortByDateDesc(items.filter(function (i) { return i.published !== false; })).slice(0, limit || 3);
+      if (!items.length) return showEmpty(container, "Belum ada berita.");
+      container.innerHTML = items.map(function (item) {
+        return '<a class="mini-news-item" href="berita-detail.html?slug=' + encodeURIComponent(item.slug) + '">' +
+          '<div class="thumb">' + imageBlock(item.featured_image, item.title) + '</div>' +
+          '<div><div class="meta">' + escapeHTML(formatDate(item.date)) + ' &middot; ' + escapeHTML(item.category || "Umum") + '</div>' +
+          '<h4>' + escapeHTML(item.title) + '</h4>' +
+          '<p>' + escapeHTML(item.excerpt || "") + '</p></div></a>';
+      }).join("");
+    });
+  }
+
+  /* ---------- PRESTASI (versi ringkas untuk dashboard beranda) ---------- */
+
+  function renderPrestasiTerbaruMini(containerId, limit) {
+    var container = el(containerId);
+    if (!container) return;
+    showLoading(container);
+    loadCollection("content/prestasi/prestasi.json").then(function (items) {
+      items = sortByDateDesc(items).slice(0, limit || 3);
+      if (!items.length) return showEmpty(container, "Belum ada prestasi.");
+      container.innerHTML = items.map(function (item) {
+        return '<div class="mini-prestasi-item">' +
+          '<div class="mini-prestasi-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0V4Z"/><path d="M17 5h3a3 3 0 0 1-3 5M7 5H4a3 3 0 0 0 3 5"/></svg></div>' +
+          '<div><h4>' + escapeHTML(item.title) + '</h4>' +
+          '<div class="meta">' + escapeHTML(item.level || "") + '</div></div></div>';
+      }).join("");
+    });
+  }
+
+  /* ---------- AGENDA (versi ringkas untuk dashboard beranda) ---------- */
+
+  function renderAgendaTerbaruMini(containerId, limit) {
+    var container = el(containerId);
+    if (!container) return;
+    showLoading(container);
+    loadCollection("content/agenda/agenda.json").then(function (items) {
+      var now = new Date();
+      items = items.slice().sort(function (a, b) { return new Date(a.date) - new Date(b.date); });
+      var upcoming = items.filter(function (i) { return new Date(i.date) >= new Date(now.toDateString()); });
+      var list = (upcoming.length ? upcoming : items).slice(0, limit || 3);
+      if (!list.length) return showEmpty(container, "Belum ada agenda.");
+      container.innerHTML = list.map(function (item) {
+        return '<div class="mini-agenda-item">' +
+          '<div class="mini-agenda-date"><span class="d">' + formatDay(item.date) + '</span><span class="m">' + formatMonthShort(item.date) + '</span></div>' +
+          '<div><h4>' + escapeHTML(item.title) + '</h4>' +
+          '<div class="meta">' + escapeHTML(item.location || "") + '</div></div></div>';
+      }).join("");
+    });
+  }
+
   /* ---------- AGENDA ---------- */
 
   function agendaItemHTML(item) {
@@ -512,11 +570,14 @@ var CL = (function () {
   return {
     formatDate: formatDate,
     renderBeritaTerbaru: renderBeritaTerbaru,
+    renderBeritaTerbaruMini: renderBeritaTerbaruMini,
     renderBeritaList: renderBeritaList,
     renderBeritaDetail: renderBeritaDetail,
     renderAgendaTerbaru: renderAgendaTerbaru,
+    renderAgendaTerbaruMini: renderAgendaTerbaruMini,
     renderAgendaList: renderAgendaList,
     renderPrestasiTerbaru: renderPrestasiTerbaru,
+    renderPrestasiTerbaruMini: renderPrestasiTerbaruMini,
     renderPrestasiList: renderPrestasiList,
     renderPenelitianList: renderPenelitianList,
     renderPengabmasList: renderPengabmasList,

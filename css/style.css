@@ -61,8 +61,8 @@ section{padding:90px 0;}
 .main-header.scrolled{box-shadow:0 6px 20px -10px rgba(11,37,69,0.25);}
 .header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:16px;}
 .brand{display:flex;align-items:center;gap:14px;}
-.brand-logo{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--blue-light));color:var(--white);display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-weight:700;font-size:0.75rem;text-align:center;flex-shrink:0;overflow:hidden;}
-.brand-logo img{width:100%;height:100%;object-fit:cover;}
+.brand-logo{width:190px;height:56px;display:flex;align-items:center;justify-content:flex-start;flex-shrink:0;overflow:hidden;}
+.brand-logo img{width:100%;height:100%;object-fit:contain;object-position:left center;display:block;}
 .brand-text .brand-title{font-family:var(--font-heading);font-weight:700;font-size:1.08rem;color:var(--navy);line-height:1.3;}
 .brand-text .brand-sub{font-size:0.8rem;color:var(--text-muted);}
 .nav-menu{display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
@@ -277,8 +277,168 @@ footer .footer-links a:hover{color:var(--white);}
   .gallery-grid{grid-template-columns:1fr 1fr;}
   .footer-grid{grid-template-columns:1fr;}
   .header-inner{padding:12px 0;}
-  .brand-logo{width:46px;height:46px;font-size:0.62rem;}
+  .brand-logo{width:145px;height:44px;}
   .download-table{display:block;overflow-x:auto;white-space:nowrap;}
 }
 
 @media (prefers-reduced-motion: reduce){*{transition:none !important;}}
+
+/* =========================================================
+   23. RESTYLE TAMBAHAN — versi tampilan seperti referensi
+   (topbar kontak+sosmed, dropdown menu, hero carousel,
+   quick access horizontal, dashboard 3 kolom, quote band)
+   ========================================================= */
+
+/* ---------- Topbar baru: kontak kiri, sosmed kanan ---------- */
+.topbar-contact{display:flex;gap:22px;align-items:center;flex-wrap:wrap;}
+.topbar-contact a{display:inline-flex;align-items:center;gap:7px;}
+.topbar-contact svg{width:14px;height:14px;flex-shrink:0;}
+.topbar-social{display:flex;gap:10px;}
+.topbar-social a{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;transition:background .2s;}
+.topbar-social a:hover{background:rgba(255,255,255,0.2);color:var(--white);}
+.topbar-social svg{width:13px;height:13px;}
+
+/* ---------- Dropdown menu navigasi ---------- */
+.nav-menu li{position:relative;list-style:none;}
+.nav-menu{display:flex;}
+.dropdown-toggle{display:inline-flex;align-items:center;gap:5px;font-family:inherit;font-size:0.9rem;font-weight:500;color:var(--text-dark);padding:6px 0;background:none;border:none;cursor:pointer;transition:color .2s;}
+.dropdown-toggle svg{width:11px;height:11px;transition:transform .2s;}
+.nav-menu li:hover .dropdown-toggle,
+.nav-menu li.open .dropdown-toggle{color:var(--blue-light);}
+.nav-menu li.open .dropdown-toggle svg,
+.nav-menu li:hover .dropdown-toggle svg{transform:rotate(180deg);}
+
+.nav-dropdown{
+  position:absolute;top:100%;left:0;margin-top:8px;
+  background:var(--white);border:1px solid var(--gray-border);border-radius:var(--radius-sm);
+  box-shadow:var(--shadow-soft);min-width:230px;padding:8px;
+  opacity:0;visibility:hidden;transform:translateY(8px);
+  transition:opacity .2s ease, transform .2s ease, visibility .2s;
+  z-index:250;
+}
+.nav-menu li:hover .nav-dropdown,
+.nav-menu li.open .nav-dropdown{opacity:1;visibility:visible;transform:translateY(0);}
+.nav-dropdown a{display:block;padding:10px 12px;border-radius:8px;font-size:0.87rem;color:var(--text-dark);transition:background .15s, color .15s;}
+.nav-dropdown a:hover{background:var(--gray-bg);color:var(--blue-light);}
+
+/* ---------- Hero split + carousel ---------- */
+.hero-split{background:var(--gray-bg);padding:0;overflow:hidden;}
+.hero-split .container{padding:0 24px;}
+.hero-split-inner{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;min-height:520px;position:relative;}
+.hero-text-col{padding:70px 48px 70px 0;position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;}
+.hero-dots-decor{position:absolute;top:6px;left:-4px;width:84px;height:64px;background-image:radial-gradient(var(--gray-border) 1.6px, transparent 1.6px);background-size:12px 12px;z-index:0;}
+.hero-text-col h1{font-size:clamp(1.7rem,3.2vw,2.5rem);margin-bottom:18px;position:relative;z-index:1;}
+.hero-text-col p{color:var(--text-muted);margin-bottom:30px;max-width:480px;position:relative;z-index:1;}
+.hero-media-col{position:relative;min-height:360px;}
+.hero-media-col .img-placeholder{position:absolute;inset:36px -24px 36px 24px;border-radius:24px;height:auto;aspect-ratio:auto;box-shadow:var(--shadow-soft);}
+.hero-arrow{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;background:var(--white);box-shadow:var(--shadow-soft);display:flex;align-items:center;justify-content:center;z-index:5;color:var(--navy);cursor:pointer;transition:background .2s;}
+.hero-arrow:hover{background:var(--blue-lighter);}
+.hero-arrow.prev{left:0;}
+.hero-arrow.next{right:0;}
+.hero-dots-nav{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:5;}
+.hero-dots-nav button{width:8px;height:8px;padding:0;border-radius:50%;background:rgba(11,37,69,0.25);cursor:pointer;transition:.2s;}
+.hero-dots-nav button.active{background:var(--navy);width:22px;border-radius:5px;}
+
+/* ---------- Quick access horizontal ---------- */
+.quick-grid-h{display:grid;grid-template-columns:repeat(auto-fit, minmax(230px,1fr));gap:20px;}
+.quick-card-h{display:flex;align-items:flex-start;gap:16px;background:var(--white);border:1px solid var(--gray-border);border-radius:var(--radius-md);padding:22px;transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;}
+.quick-card-h:hover{transform:translateY(-5px);box-shadow:var(--shadow-soft);border-color:var(--blue-light);}
+.quick-icon-h{width:46px;height:46px;border-radius:12px;background:var(--blue-lighter);color:var(--blue-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.quick-card-h h3{font-size:0.98rem;margin-bottom:4px;}
+.quick-card-h p{font-size:0.82rem;color:var(--text-muted);margin:0;}
+.quick-card-h .chevron{margin-left:auto;align-self:center;color:var(--text-muted);flex-shrink:0;}
+
+/* ---------- Dashboard 3 kolom (Berita / Agenda / Prestasi + Kontak mini) ---------- */
+.dashboard-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:24px;align-items:start;}
+.dash-col{background:var(--white);border:1px solid var(--gray-border);border-radius:var(--radius-md);overflow:hidden;}
+.dash-col-head{background:var(--navy);color:var(--white);padding:15px 20px;display:flex;justify-content:space-between;align-items:center;gap:10px;}
+.dash-col-head h3{color:var(--white);font-size:0.85rem;letter-spacing:0.04em;text-transform:uppercase;margin:0;}
+.dash-col-head a{color:#8FCBFF;font-size:0.78rem;font-weight:600;flex-shrink:0;}
+.dash-col-head a:hover{color:var(--white);}
+.dash-col-body{padding:6px 18px;}
+
+.mini-news-item{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--gray-border);}
+.mini-news-item:last-child{border-bottom:none;}
+.mini-news-item .thumb{width:76px;height:60px;border-radius:8px;flex-shrink:0;overflow:hidden;}
+.mini-news-item .thumb img{width:100%;height:100%;object-fit:cover;}
+.mini-news-item .thumb.img-placeholder{aspect-ratio:auto;height:60px;padding:4px;}
+.mini-news-item .thumb.img-placeholder svg{width:20px;height:20px;}
+.mini-news-item .thumb.img-placeholder span{display:none;}
+.mini-news-item h4{font-size:0.9rem;margin-bottom:4px;line-height:1.35;}
+.mini-news-item .meta{font-size:0.72rem;color:var(--blue-light);font-weight:600;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.03em;}
+.mini-news-item p{font-size:0.8rem;color:var(--text-muted);margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+
+.mini-agenda-item{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--gray-border);}
+.mini-agenda-item:last-child{border-bottom:none;}
+.mini-agenda-date{width:52px;height:52px;border-radius:10px;background:var(--blue-lighter);color:var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--font-heading);}
+.mini-agenda-date .d{font-weight:700;font-size:1.05rem;line-height:1;}
+.mini-agenda-date .m{font-size:0.6rem;letter-spacing:0.05em;margin-top:2px;}
+.mini-agenda-item h4{font-size:0.86rem;margin-bottom:4px;line-height:1.35;}
+.mini-agenda-item .meta{font-size:0.75rem;color:var(--text-muted);}
+
+.mini-prestasi-item{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--gray-border);}
+.mini-prestasi-item:last-child{border-bottom:none;}
+.mini-prestasi-icon{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#FFE9B0,#F7C948);color:#8A5A00;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.mini-prestasi-item h4{font-size:0.87rem;margin-bottom:3px;line-height:1.35;}
+.mini-prestasi-item .meta{font-size:0.76rem;color:var(--blue-light);font-weight:600;}
+
+/* ---------- Kartu Kontak mini (dashboard kolom ke-3) ---------- */
+.contact-mini{margin-top:22px;background:var(--white);border:1px solid var(--gray-border);border-radius:var(--radius-md);overflow:hidden;}
+.contact-mini-head{background:var(--navy);color:var(--white);padding:13px 20px;}
+.contact-mini-head h3{color:var(--white);font-size:0.82rem;letter-spacing:0.04em;text-transform:uppercase;margin:0;}
+.contact-mini-body{display:flex;}
+.contact-mini-info{flex:1;padding:16px 18px;font-size:0.8rem;color:var(--text-muted);display:flex;flex-direction:column;gap:11px;}
+.contact-mini-info div{display:flex;gap:8px;align-items:flex-start;}
+.contact-mini-info svg{width:15px;height:15px;flex-shrink:0;margin-top:2px;color:var(--blue-light);}
+.contact-mini-photo{width:110px;flex-shrink:0;}
+.contact-mini-photo .img-placeholder{height:100%;border-radius:0;border:none;padding:8px;}
+.contact-mini-photo .img-placeholder svg{width:22px;height:22px;}
+.contact-mini-photo .img-placeholder span{font-size:0.62rem;}
+
+/* ---------- Pita kutipan navy sebelum footer ---------- */
+.quote-band{background:var(--navy);color:var(--white);text-align:center;padding:24px 0;position:relative;overflow:hidden;}
+.quote-band p{color:#D6E4F2;font-style:italic;font-family:var(--font-heading);font-size:1.02rem;position:relative;z-index:2;margin:0;}
+.quote-band .tooth-decor{position:absolute;right:6%;top:50%;transform:translateY(-50%);width:46px;height:46px;opacity:.15;z-index:1;}
+
+/* ---------- Responsive tambahan ---------- */
+@media (max-width:1024px){
+  .dashboard-grid{grid-template-columns:1fr;}
+  .hero-split-inner{grid-template-columns:1fr;min-height:auto;}
+  .hero-media-col{min-height:280px;order:-1;}
+  .hero-media-col .img-placeholder{position:relative;inset:auto;margin:24px;border-radius:20px;}
+  .hero-text-col{padding:40px 24px;}
+}
+@media (max-width:900px){
+  .nav-dropdown{position:static;box-shadow:none;border:none;opacity:1;visibility:visible;transform:none;margin-top:0;padding-left:14px;max-height:0;overflow:hidden;transition:max-height .25s ease;}
+  .nav-menu li.open .nav-dropdown{max-height:400px;}
+  .nav-menu li:hover .nav-dropdown{max-height:0;}
+  .nav-menu li.open .nav-dropdown{max-height:400px;}
+  .dropdown-toggle{width:100%;justify-content:space-between;padding:10px 0;}
+}
+@media (max-width:768px){
+  .quick-grid-h{grid-template-columns:1fr 1fr;}
+  .contact-mini-body{flex-direction:column;}
+  .contact-mini-photo{width:100%;height:110px;}
+}
+@media (max-width:560px){
+  .quick-grid-h{grid-template-columns:1fr;}
+  .topbar-contact{gap:12px;font-size:0.76rem;}
+}
+
+
+/* ===== HERO IMAGE FINAL ===== */
+#heroMedia{position:absolute;inset:36px -24px 36px 24px;border-radius:24px;overflow:hidden;box-shadow:var(--shadow-soft);background:#eaf3fb;}
+.hero-media-photo{width:100%;height:100%;display:block;object-fit:cover;object-position:center center;}
+.hero-arrow,.hero-dots-nav{display:none !important;}
+@media(max-width:768px){
+  #heroMedia{position:relative;inset:auto;margin:24px;border-radius:20px;height:280px;}
+  .hero-media-photo{height:100%;}
+}
+
+
+/* Penyesuaian logo institusi pada layar menengah */
+@media(max-width:1200px){
+  .brand-logo{width:155px;height:48px;}
+  .brand-text .brand-title{font-size:0.95rem;}
+  .brand-text .brand-sub{display:none;}
+}
