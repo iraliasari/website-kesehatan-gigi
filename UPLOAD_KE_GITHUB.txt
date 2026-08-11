@@ -1,0 +1,11 @@
+VERSI SIAP UPLOAD KE GITHUB
+
+1. Ekstrak ZIP ini.
+2. Buka repository GitHub website-kesehatan-gigi.
+3. Klik Add file > Upload files.
+4. Upload SEMUA ISI folder hasil ekstrak ini (bukan folder induknya).
+5. Commit changes.
+6. Jika Netlify terhubung ke GitHub, tunggu deploy selesai lalu refresh website.
+
+Gambar hero sudah ada di: images/hero.jpg
+Tidak perlu mengedit kode hero lagi.
